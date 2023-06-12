@@ -5,21 +5,18 @@ import PackageDescription
 
 let package = Package(
   name: "Glaip",
-  platforms: [
-    .iOS(.v13),
-  ],
+  platforms: [.macOS(.v10_15), .iOS(.v13)],
   products: [
     .library(
       name: "Glaip",
       targets: ["Glaip"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/WalletConnect/WalletConnectSwift.git", .upToNextMinor(from: "1.7.0"))
+    .package(url: "https://github.com/WalletConnect/WalletConnectSwift.git", branch: "master")
   ],
   targets: [
     .target(
       name: "Glaip",
       dependencies: ["WalletConnectSwift"]),
-
   ]
 )

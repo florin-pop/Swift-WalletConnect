@@ -76,8 +76,14 @@ public final class WalletLinkService: WalletService {
 
   private func openAppToConnect(wallet: WalletType, _ url: String, delay: CGFloat = 0) {
     DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-      if let url = URL(string: self.getDeepLink(wallet: wallet)), UIApplication.shared.canOpenURL(url) {
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+      if let url = URL(string: self.getDeepLink(wallet: wallet)) {
+        #if os(macOS)
+          NSWorkspace.shared.open(url)
+        #else
+        if UIApplication.shared.canOpenURL(url) {
+          UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+        #endif
       }
     }
   }
