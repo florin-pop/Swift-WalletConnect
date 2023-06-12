@@ -5,7 +5,7 @@
 //  Created by Mauricio Vazquez on 15/8/22.
 //
 
-public enum WalletType: String, Equatable {
+public enum WalletType: String, Equatable, Codable {
   case MetaMask = "https://metamask.app.link/wc?uri="
   case Rainbow = "https://rnbwapp.com/wc?uri="
   case AlphaWallet = "https://aw.app/wc?uri="
